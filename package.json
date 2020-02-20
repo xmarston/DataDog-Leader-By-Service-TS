@@ -1,0 +1,23 @@
+{
+  "name": "dd-leader-manager-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.621.0",
+    "better-logging": "^3.5.0",
+    "inquirer": "^7.0.4",
+    "yaml": "^1.7.2"
+  }
+}
