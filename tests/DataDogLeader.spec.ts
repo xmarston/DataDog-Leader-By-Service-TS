@@ -5,20 +5,21 @@ import 'mocha';
 import { DataDogLeader } from '../src/DataDogLeader';
 
 describe('DataDogLeader', () => {
-  let instance: DataDogLeader;
+  let mockDataDog: DataDogLeader;
 
   beforeEach(() => {
-    instance = mock(DataDogLeader);
+    mockDataDog = mock(DataDogLeader);
   });
 
   it('should return id of the instance that has DataDog Agent installed', async () => {
-    let mockPromise = new Promise<string>((resolve, reject) => {
+    const mockPromise = new Promise<string>((resolve, reject) => {
       resolve('i-123456789');
     });
-    when(instance.getLeader('tryclyde')).thenReturn(mockPromise);
+    when(mockDataDog.getLeader('tryclyde')).thenReturn(mockPromise);
 
-    async () => {
-      expect(await instance.getLeader('tryclyde')).to.equal('i-123456789');
-    }
+    const mockInstance = instance(mockDataDog);
+    const result = await mockInstance.getLeader('tryclyde');
+
+    expect(result).to.equal('i-123456789');
   });
 });

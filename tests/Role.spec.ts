@@ -5,10 +5,10 @@ import 'mocha';
 import { Role } from '../src/Role';
 
 describe('Role', () => {
-  let instance: Role;
+  let mockRole: Role;
 
   beforeEach(() => {
-    instance = mock(Role);
+    mockRole = mock(Role);
   });
 
   it('should return all the services available for DataDog Agent', async () => {
@@ -18,13 +18,14 @@ describe('Role', () => {
         'tryclyde'
       ]);
     });
-    when(instance.getRolesList()).thenReturn(mockPromise);
+    when(mockRole.getRolesList()).thenReturn(mockPromise);
 
-    async () => {
-      expect(await instance.getRolesList()).to.equal([
-        'albatoss',
-        'tryclyde'
-      ]);
-    }
+    const mockInstance = instance(mockRole);
+    const result = await mockInstance.getRolesList();
+
+    expect(result).to.eql([
+      'albatoss',
+      'tryclyde'
+    ]);
   });
 });
